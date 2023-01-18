@@ -7,6 +7,8 @@ ELIF _DEVICE_='P'
     EQUS " BPP"
 ELIF _DEVICE_='M'
     EQUS " MM"
+ELIF _DEVICE_='S'
+    EQUS " SPI"
 ENDIF
 ENDMACRO
 

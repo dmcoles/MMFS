@@ -57,12 +57,13 @@ do
     # M is MemoryMapped IO based (typically &FE18, for BeebEm)
     # P is Beeb Printer Port connected Interface (experimental)
     # G is Mega Games Cartridge MKII
+    # S is MasterSD SPI Interface (experimental)
 
     if [ $system == "MMFS2" ]
     then
-        DEVICES="U T E M P"
+        DEVICES="S"  #"S U T E M P"
     else
-        DEVICES="U T E M P G"
+        DEVICES="S"  #"S U T E M P G"
     fi
 
     for device in $DEVICES
@@ -103,6 +104,10 @@ do
         elif [ $device == "P" ]
         then
             filelist="top_MMFS*.asm top_MAMMFS*.asm top_SWMMFS*.asm top_ZMMFS.asm"
+        elif [ $device == "S" ]
+        then
+            filelist="top_SPI*.asm"
+            
         else
             filelist="top_*MMFS*.asm"
         fi

@@ -7646,6 +7646,8 @@ ELIF _DEVICE_='G'
     ELSE
         INCLUDE "MMC_MGCII_BitBang.asm"
     ENDIF
+ELIF _DEVICE_='S'
+	INCLUDE "MMC_MasterSD.asm"
 ENDIF
 
 .errWrite2
