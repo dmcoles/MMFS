@@ -136,7 +136,7 @@ acccon%=&fe34
     BEQ        LAB_a678
 
 .MMC_ReadBLS
-    LDX        &00c3
+    LDX        byteslastsec%
 .LAB_a678
     LDY        #0
     LDA        TubeNoTransferIf0

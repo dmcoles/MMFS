@@ -61,9 +61,9 @@ do
 
     if [ $system == "MMFS2" ]
     then
-        DEVICES="S"  #"S U T E M P"
+        DEVICES="S U T E M P"
     else
-        DEVICES="S"  #"S U T E M P G"
+        DEVICES="S U T E M P G"
     fi
 
     for device in $DEVICES
