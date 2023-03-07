@@ -212,6 +212,28 @@ ENDIF
 .Go_FSCV
 	JMP (FSCV)
 
+IF _MASTERSD_
+.dobank
+
+  LDA        &fe34
+  PHA
+  
+  ORA        #&20
+  STA        &fe34
+    
+  TYA
+  STA &fc23
+  
+  PLA
+  STA        &fe34
+  
+  JSR PrintString
+  EQUS "ok",13
+  NOP
+  JSR ReturnWithA0
+  RTS
+ENDIF
+
 	\ Illuminate Caps Lock & Shift Lock
 .SetLEDS
 IF _ELECTRON_
@@ -1551,6 +1573,10 @@ IF _UTILS_
 	EQUB &80+&08
 	EQUS "LIST"
 	EQUB &80+&08
+  IF _MASTERSD_
+	EQUS "BANK"
+	EQUB &80+&0B
+  ENDIF
 ENDIF
 IF _ROMS_
 	EQUS "ROMS"
@@ -1718,6 +1744,9 @@ IF _UTILS_
 
 	EQUW CMD_DUMP-1
 	EQUW CMD_LIST-1
+  IF _MASTERSD_
+  EQUW mastersd_cmd_bank-1
+  ENDIF
 ENDIF
 IF _ROMS_
 	EQUW CMD_ROMS-&8001
@@ -8406,6 +8435,24 @@ ENDIF
 ENDIF
 
 ENDIF ;NOT(_MM32_)
+IF _MASTERSD_
+.mastersd_cmd_bank
+  JSR GSINIT_A
+	BEQ bank_exit	; If null string
+  JSR GSREAD_A
+  BCS bank_exit; IF end of string
+  CMP #56
+  BCS bank_exit
+  CMP #48-1
+  BCC bank_exit
+  SBC #48
+  TAY
+
+  JMP dobank
+  
+.bank_exit
+	JMP errBADOPTION
+ENDIF
 
 	\ Include OSWORD emulation routines here
 

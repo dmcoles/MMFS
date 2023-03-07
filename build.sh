@@ -106,7 +106,7 @@ do
             filelist="top_MMFS*.asm top_MAMMFS*.asm top_SWMMFS*.asm top_ZMMFS.asm"
         elif [ $device == "S" ]
         then
-            filelist="top_SPI*.asm"
+            filelist="top_MSD*.asm"
             
         else
             filelist="top_*MMFS*.asm"

@@ -13,6 +13,7 @@ _DEBUG=FALSE            ; true = enable debugging of service calls, etc
 _DEBUG_MMC=FALSE        ; true = enable debugging of MMC initialization
 _DFS_EMUL=TRUE          ; true = use DFS filesystem number + handles
 _USE_MGC_SHIFTREG=TRUE  ; false = Bit Bang, true = Shift Reg
+_MASTERSD_=FALSE
 
 MACRO BASE_NAME
     EQUS "MGC "

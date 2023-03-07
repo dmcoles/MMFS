@@ -12,6 +12,7 @@ _LARGEFILES=TRUE        ; true = enable long (>64K) file support
 _DEBUG=FALSE            ; true = enable debugging of service calls, etc
 _DEBUG_MMC=FALSE        ; true = enable debugging of MMC initialization
 _DFS_EMUL=TRUE          ; true = use DFS filesystem number + handles
+_MASTERSD_=FALSE
 
 MACRO BASE_NAME
     EQUS "Master "
